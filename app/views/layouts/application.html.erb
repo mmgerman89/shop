@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Shop</title>
+    <title><%= yield(:title) %> | Shop</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,9 @@
   </head>
 
   <body>
+  	<%= link_to 'Inicio', root_path %>
+  	<%= link_to 'Ayuda', help_path %>
+  	<%= link_to 'Acerca de', about_path %>
     <%= yield %>
   </body>
 </html>
