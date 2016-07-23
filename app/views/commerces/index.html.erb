@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Commerces</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @commerces.each do |commerce| %>
+      <tr>
+        <td><%= commerce.name %></td>
+        <td><%= commerce.user_id %></td>
+        <td><%= link_to 'Show', commerce %></td>
+        <td><%= link_to 'Edit', edit_commerce_path(commerce) %></td>
+        <td><%= link_to 'Destroy', commerce, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Commerce', new_commerce_path %>
