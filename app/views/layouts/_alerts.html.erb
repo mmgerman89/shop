@@ -1,0 +1,11 @@
+<div class="container-fluid">
+	<div class="row">
+    	<% if notice.present? %>
+		  <div class="alert alert-info" role="alert"><%= notice %></div>
+		<% end %>
+
+		<% if alert.present? %>
+		  <div class="alert alert-danger" role="alert"><%= alert %></div>
+		<% end %>
+	</div>
+</div>
