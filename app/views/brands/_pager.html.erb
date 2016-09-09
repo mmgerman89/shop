@@ -1,0 +1,12 @@
+<nav>
+	<ul class="pager">
+		<li class="previous <%= page == 0 ? 'disabled' : '' %>">
+			<%= link_to_if page > 0, "&larr; Anterior".html_safe,
+						brands_path(keywords: keywords, page: page - 1) %>
+		</li>
+		<li class="next <%= page == @number_of_pages ? 'disabled' : '' %>">
+			<%= link_to_if page < @number_of_pages, "Siguiente &rarr;".html_safe,
+						brands_path(keywords: keywords, page: page + 1) %>
+		</li>
+	</ul>
+</nav>

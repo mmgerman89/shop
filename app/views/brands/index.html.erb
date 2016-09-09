@@ -7,6 +7,9 @@
   <table class="table">
     <thead>
       <tr>
+        <%= render partial: "pager", locals: { keywords: @keywords, page: @page } %>
+      </tr>
+      <tr>
         <th>Nombre</th>
         <th>Fecha de Alta</th>
         <th>Fecha de Modificación</th>

@@ -1,15 +1,22 @@
 class BrandsController < ApplicationController
   before_action :set_brand, only: [:show, :edit, :update, :destroy]
+  PAGE_SIZE = 10
 
   # GET /brands
   # GET /brands.json
   def index
+    @page = (params[:page] || 0).to_i
+
     if params[:keywords].present?
       @keywords = params[:keywords]
       @brands = Brand.where("lower(name) LIKE '%#{@keywords.downcase}%'").order(:name)
+                      .offset(PAGE_SIZE * @page).limit(PAGE_SIZE)
+      @number_of_pages = Brand.where("lower(name) LIKE '%#{@keywords.downcase}%'").count / PAGE_SIZE
     else
-      @brands = Brand.order(:name)
+      @brands = Brand.order(:name).offset(PAGE_SIZE * @page).limit(PAGE_SIZE)
+      @number_of_pages = Brand.count / PAGE_SIZE
     end
+    puts @number_of_pages
   end
 
   # GET /brands/1
