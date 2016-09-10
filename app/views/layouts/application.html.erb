@@ -17,9 +17,9 @@
     <% if user_signed_in? %>
       <div class="container-fluid">
         <div class="row">
-          <%= render 'layouts/sidebar' %>
+            <%= render 'layouts/sidebar' %>
 
-          <div class="col-sm-9 col-md-10 main">
+          <div class="main">
             <%= render 'layouts/alerts' %>
             
             <%= yield %>

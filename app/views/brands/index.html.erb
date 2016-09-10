@@ -1,8 +1,11 @@
 <div class="panel panel-default">
   <div class="panel-heading">Marcas</div>
   <div class="panel-body">
-    <p><%= button_to 'Nueva Marca', new_brand_path, method: :get, class: "btn btn-primary" %></p>
     <%= render partial: 'layouts/search_form', locals: { search_entity: :brand, word: "Marca" } %>
+    <br>
+    <div class="col-md-5 col-md-offset-5 col-sm-5 col-sm-offset-5">
+      <p><%= button_to 'Nueva Marca', new_brand_path, method: :get, class: "btn btn-success" %></p>
+    </div>
   </div>
   <table class="table">
     <thead>
@@ -21,8 +24,8 @@
       <% @brands.each do |brand| %>
         <tr>
           <td><%= brand.name %></td>
-          <td><%= brand.created_at %></td>
-          <td><%= brand.updated_at %></td>
+          <td><%= brand.created_at.strftime("%d/%m/%Y") %></td>
+          <td><%= brand.updated_at.strftime("%d/%m/%Y") %></td>
           <td><%= button_to 'Editar', edit_brand_path(brand), method: :get, class: "btn btn-info" %></td>
           <td><%= button_to 'Eliminar', brand, method: :delete, data: { confirm: '¿Está seguro?' }, method: :delete, class: "btn btn-danger" %></td>
         </tr>
