@@ -18,7 +18,6 @@ class BrandsController < ApplicationController
     end
     @number_of_pages = (number_of_records % PAGE_SIZE) == 0 ? 
                         number_of_records / PAGE_SIZE - 1 : number_of_records / PAGE_SIZE
-    puts @number_of_pages
   end
 
   # GET /brands/1

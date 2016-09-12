@@ -5,7 +5,9 @@
 			<%= text_field_tag :keywords, nil, placeholder: "Buscar",
 								class: "form-control", value: "#{@keywords}" %>
 			<span class="input-group-btn">
-				<%= submit_tag "Buscar #{word}", class: "btn btn-primary" %>
+				<%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+				  <span class="glyphicon glyphicon-search"></span> Buscar <%= "#{word}" %>
+				<% end %>
 			</span>
 		</div>
 	<% end %>
