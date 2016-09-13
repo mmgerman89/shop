@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="panel-body">
+      <%= form_for(category) do |f| %>
+        <% if category.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+            <ul>
+            <% category.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="form-group">
+          <%= f.text_field :name, autofocus: true, placeholder: "Nombre", class: "form-control" %>
+        </div>
+
+        <%= f.submit "Aceptar", class: "btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>
