@@ -9,9 +9,9 @@ class BrandsController < ApplicationController
 
     if params[:keywords].present?
       @keywords = params[:keywords]
-      @brands = Brand.where("unaccent(lower(name)) LIKE '%#{@keywords.downcase}%'").order(:name)
+      @brands = Brand.where("unaccent(lower(name)) LIKE '%#{I18n.transliterate(@keywords.downcase)}%'").order(:name)
                       .offset(PAGE_SIZE * @page).limit(PAGE_SIZE)
-      number_of_records = Brand.where("unaccent(lower(name)) LIKE '%#{@keywords.downcase}%'").count
+      number_of_records = Brand.where("unaccent(lower(name)) LIKE '%#{I18n.transliterate(@keywords.downcase)}%'").count
     else
       @brands = Brand.order(:name).offset(PAGE_SIZE * @page).limit(PAGE_SIZE)
       number_of_records = Brand.count

@@ -9,9 +9,9 @@ class CategoriesController < ApplicationController
 
     if params[:keywords].present?
       @keywords = params[:keywords]
-      @categories = Category.where("unaccent(lower(name)) LIKE '%#{@keywords.downcase}%'").order(:name)
+      @categories = Category.where("unaccent(lower(name)) LIKE '%#{I18n.transliterate(@keywords.downcase)}%'").order(:name)
                       .offset(PAGE_SIZE * @page).limit(PAGE_SIZE)
-      number_of_records = Category.where("unaccent(lower(name)) LIKE '%#{@keywords.downcase}%'").count
+      number_of_records = Category.where("unaccent(lower(name)) LIKE '%#{I18n.transliterate(@keywords.downcase)}%'").count
     else
       @categories = Category.order(:name).offset(PAGE_SIZE * @page).limit(PAGE_SIZE)
       number_of_records = Category.count
