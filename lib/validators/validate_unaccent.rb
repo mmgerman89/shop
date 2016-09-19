@@ -1,9 +1,9 @@
 class ValidateUnaccent < ActiveModel::Validator
 	def validate(record)
-		records = Category.all
+		records = options[:model].all
 		records.each do |r|
-			if I18n.transliterate(r.name.downcase) == record.name.downcase
-				record.errors[:name] << 'Ya existe ese nombre'
+			if I18n.transliterate(r.name.downcase) == I18n.transliterate(record.name.downcase)
+				record.errors[:name] << 'Ya Existe'
 			end
 		end
 	end

@@ -1,0 +1,33 @@
+<table class="table">
+  <thead>
+    <tr>
+      <%= render partial: "pager", locals: { keywords: @keywords, page: @page } %>
+    </tr>
+    <tr>
+      <th>Nombre</th>
+      <th>Fecha de Alta</th>
+      <th>Fecha de Modificación</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @units.each do |unit| %>
+      <tr>
+        <td><%= unit.name %></td>
+        <td><%= unit.created_at.strftime("%d/%m/%Y") %></td>
+        <td><%= unit.updated_at.strftime("%d/%m/%Y") %></td>
+        <td>
+          <%= button_to edit_unit_path(unit), {method: :get, class: "btn btn-info"} do %>
+            <span class="glyphicon glyphicon-pencil" aria-hidden="true"> </span> Editar
+          <% end %>
+        </td>
+        <td>
+          <%= button_to unit, { method: :delete, data: { confirm: '¿Está seguro?' }, class: "btn btn-danger" } do %>
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span> Eliminar
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

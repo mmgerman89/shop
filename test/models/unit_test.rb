@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: brands
+# Table name: units
 #
 #  id         :integer          not null, primary key
 #  name       :string
@@ -8,10 +8,10 @@
 #  updated_at :datetime         not null
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+require 'test_helper'
 
-one:
-  name: MyString
-
-two:
-  name: MyString
+class UnitTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
+end
