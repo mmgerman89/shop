@@ -6,18 +6,10 @@ class CategoriesController < ApplicationController
   # GET /categories.json
   def index
     @page = (params[:page] || 0).to_i
+    keywords = params[:keywords]
 
-    if params[:keywords].present?
-      @keywords = params[:keywords]
-      @categories = Category.where("unaccent(lower(name)) LIKE '%#{I18n.transliterate(@keywords.downcase)}%'").order(:name)
-                      .offset(PAGE_SIZE * @page).limit(PAGE_SIZE)
-      number_of_records = Category.where("unaccent(lower(name)) LIKE '%#{I18n.transliterate(@keywords.downcase)}%'").count
-    else
-      @categories = Category.order(:name).offset(PAGE_SIZE * @page).limit(PAGE_SIZE)
-      number_of_records = Category.count
-    end
-    @number_of_pages = (number_of_records % PAGE_SIZE) == 0 ? 
-                        number_of_records / PAGE_SIZE - 1 : number_of_records / PAGE_SIZE
+    search = Search.new(@page, PAGE_SIZE, keywords)
+    @categories, @number_of_pages = search.categories_by_name
   end
 
   # GET /categories/1

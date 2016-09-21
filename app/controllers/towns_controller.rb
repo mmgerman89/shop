@@ -6,18 +6,10 @@ class TownsController < ApplicationController
   # GET /towns.json
   def index
     @page = (params[:page] || 0).to_i
+    keywords = params[:keywords]
 
-    if params[:keywords].present?
-      @keywords = params[:keywords]
-      @towns = Town.where("unaccent(lower(name)) LIKE '%#{I18n.transliterate(@keywords.downcase)}%'").order(:name)
-                      .offset(PAGE_SIZE * @page).limit(PAGE_SIZE)
-      number_of_records = Town.where("unaccent(lower(name)) LIKE '%#{I18n.transliterate(@keywords.downcase)}%'").count
-    else
-      @towns = Town.order(:name).offset(PAGE_SIZE * @page).limit(PAGE_SIZE)
-      number_of_records = Town.count
-    end
-    @number_of_pages = (number_of_records % PAGE_SIZE) == 0 ? 
-                        number_of_records / PAGE_SIZE - 1 : number_of_records / PAGE_SIZE
+    search = Search.new(@page, PAGE_SIZE, keywords)
+    @towns, @number_of_pages = search.towns_by_name
   end
 
   # GET /towns/1
