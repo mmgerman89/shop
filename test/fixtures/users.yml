@@ -23,8 +23,22 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+# one: {email: "test1@tests.com"}
 # column: value
 #
-two: {}
+#two: {email: "test2@tests.com"}
 # column: value
+#user: { }
+
+admin:
+  id: 1
+  email: "juan@example.ltd.uk"
+  encrypted_password: "$2a$04$ksQH6hvij.p0ty2Syd/D.OTf.Vp8fg7Le.QPHyrbUDY3klr8Kwnia"
+  reset_password_token: <%= nil %>
+  reset_password_sent_at: <%= nil %>
+  remember_created_at: <%= nil %>
+  sign_in_count: 1
+  current_sign_in_at: "2012-11-16 11:49:14"
+  last_sign_in_at: "2012-11-16 11:49:14"
+  current_sign_in_ip: "127.0.0.1"
+  last_sign_in_ip: "127.0.0.1"

@@ -1,8 +1,12 @@
 require 'test_helper'
 
 class BrandsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+  
   setup do
+    sign_in users(:admin)
     @brand = brands(:one)
+    @brand2 = Brand.new(name: "Marca de Prueba")
   end
 
   test "should get index" do
@@ -17,10 +21,11 @@ class BrandsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create brand" do
     assert_difference('Brand.count') do
-      post brands_url, params: { brand: { name: @brand.name } }
+      post brands_url, params: { brand: { name: @brand2.name } }
     end
 
-    assert_redirected_to brand_url(Brand.last)
+    #assert_redirected_to brands_url(Brand.last)
+    assert_redirected_to brands_url
   end
 
   test "should show brand" do
@@ -35,7 +40,7 @@ class BrandsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update brand" do
     patch brand_url(@brand), params: { brand: { name: @brand.name } }
-    assert_redirected_to brand_url(@brand)
+    assert_response :success
   end
 
   test "should destroy brand" do

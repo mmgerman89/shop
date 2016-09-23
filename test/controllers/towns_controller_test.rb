@@ -1,8 +1,12 @@
 require 'test_helper'
 
 class TownsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
+    sign_in users(:admin)
     @town = towns(:one)
+    @town2 = Town.new(name: "Moldes", code: 4426)
   end
 
   test "should get index" do
@@ -17,10 +21,10 @@ class TownsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create town" do
     assert_difference('Town.count') do
-      post towns_url, params: { town: { code: @town.code, name: @town.name } }
+      post towns_url, params: { town: { code: @town2.code, name: @town2.name } }
     end
 
-    assert_redirected_to town_url(Town.last)
+    assert_redirected_to towns_url
   end
 
   test "should show town" do
@@ -35,7 +39,7 @@ class TownsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update town" do
     patch town_url(@town), params: { town: { code: @town.code, name: @town.name } }
-    assert_redirected_to town_url(@town)
+    assert_redirected_to towns_url
   end
 
   test "should destroy town" do

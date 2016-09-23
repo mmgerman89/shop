@@ -23,4 +23,22 @@ class UserTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
+  def setup
+  	@user1 = User.new(email: "user1@tests.com", password: "password")
+  	@user1.save!
+  	@user2 = User.new(email: "user1@tests.com", password: "password")
+  	@user3 = User.new(email: "user3@tests.com", password: "12345")
+  end
+
+  test "should be valid" do
+  	assert @user1.valid?
+  end
+
+  test "should not be valid" do
+  	assert !@user2.valid?
+  end
+
+  test "password too short" do
+  	assert !@user3.valid?
+  end
 end
