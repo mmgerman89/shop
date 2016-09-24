@@ -55,10 +55,27 @@ class Search
 	    return units, number_of_pages
 	end
 
+
+	def items_by_description
+		if @keywords.present?
+		    items = Item.where(description_condition).order(:description).offset(@offset).limit(@page_size)
+		    @number_of_records = Item.where(description_condition).count
+	    else
+		    items = Item.order(:description).offset(@offset).limit(@page_size)
+		    @number_of_records = Item.count
+	    end
+	    
+	    return items, number_of_pages
+	end
+
 	private
 
 	def name_condition
 		name_condition = "unaccent(lower(name)) LIKE '%#{I18n.transliterate(@keywords.downcase)}%'"
+	end
+
+	def description_condition
+		description_condition = "unaccent(lower(description)) LIKE '%#{I18n.transliterate(@keywords.downcase)}%'"
 	end
 
 	def number_of_pages

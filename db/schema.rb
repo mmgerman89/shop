@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160921021544) do
+ActiveRecord::Schema.define(version: 20160924211049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,27 @@ ActiveRecord::Schema.define(version: 20160921021544) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string   "code"
+    t.string   "description"
+    t.integer  "brand_id"
+    t.integer  "unit_id"
+    t.integer  "stock"
+    t.integer  "min_stock"
+    t.integer  "category_id"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.decimal  "price",       precision: 8, scale: 2
+    t.index ["brand_id"], name: "index_items_on_brand_id", using: :btree
+    t.index ["category_id"], name: "index_items_on_category_id", using: :btree
+    t.index ["unit_id"], name: "index_items_on_unit_id", using: :btree
+  end
+
+  create_table "searches", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -59,4 +80,7 @@ ActiveRecord::Schema.define(version: 20160921021544) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "items", "brands"
+  add_foreign_key "items", "categories"
+  add_foreign_key "items", "units"
 end

@@ -1,24 +1,9 @@
-# README
+# Sistema de Gestión de Negocios
+Sistema de Gestión de negocios con Ruby on Rails 5. Este sistema es parte de un proyecto personal que voy explicando en mi blog: http://blog.gmartinez.net/category/proyecto/
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Tecnología utilizada:
+  - Ruby on Rails 5
+  - PostgreSQL 9.5
+  - Bootstrap 3
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Puede encontrar una descripción más detallada en el siguiente link: http://blog.gmartinez.net/sistema-de-gestion-de-negocios-con-ruby-on-rails-5-parte-i/
