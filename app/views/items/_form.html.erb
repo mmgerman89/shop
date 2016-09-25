@@ -14,36 +14,85 @@
           </div>
         <% end %>
 
-        <div class="form-group">
-          <%= f.text_field :code, autofocus: true, placeholder: "Código", class: "form-control" %>
+        <div class="form-group row">
+          <div class="col-xs-2">
+            <%= f.label :code, "Código" %>
+          </div>
+          <div class="col-xs-10">
+            <%= f.text_field :code, autofocus: true, placeholder: "Código", class: "form-control" %>
+          </div>
         </div>
 
-        <div class="form-group">
-          <%= f.text_field :description, placeholder: "Descripción", class: "form-control" %>
+        <div class="form-group row">
+          <div class="col-xs-2">
+            <%= f.label :description, "Descripción" %>
+          </div>
+          <div class="col-xs-10">
+            <%= f.text_field :description, placeholder: "Descripción", class: "form-control" %>
+          </div>
         </div>
 
-        <div class="form-group">
-          <%= f.collection_select :brand_id, Brand.all, :id, :name, {selected: @item.brand_id, include_blank: 'Seleccione Marca'}, {class: "form-control"} %>
+        <div class="form-group row">
+          <div class="col-xs-2">
+            <%= f.label :brand_id, "Marca" %>
+          </div>
+          <div class="col-xs-10">
+            <%= f.collection_select :brand_id, Brand.all, :id, :name, 
+                  {selected: @item.brand_id, include_blank: 'Seleccione Marca'},
+                  {class: "form-control"} %>
+          </div>
         </div>
 
-        <div class="form-group">
-          <%= f.collection_select :unit_id, Unit.all, :id, :name, {selected: @item.unit_id, include_blank: 'Seleccione Unidad'}, {class: "form-control"} %>
+        <div class="form-group row">
+          <div class="col-xs-2">
+            <%= f.label :unit_id, "Unidad" %>
+          </div>
+          <div class="col-xs-10">
+            <%= f.collection_select :unit_id, Unit.all, :id, :name, 
+                  {selected: @item.unit_id, include_blank: 'Seleccione Unidad'},
+                  {class: "form-control"} %>
+          </div>
         </div>
 
-        <div class="form-group">
-          <%= f.number_field :stock, placeholder: "Stock", class: "form-control" %>
+        <div class="form-group row">
+          <div class="col-xs-2">
+            <%= f.label :stock, "Stock" %>
+          </div>
+          <div class="col-xs-10">
+            <%= f.number_field :stock, placeholder: "Stock", class: "form-control" %>
+          </div>
         </div>
 
-        <div class="form-group">
-          <%= f.number_field :min_stock, placeholder: "Stock Mínimo", class: "form-control" %>
+        <div class="form-group row">
+          <div class="col-xs-2">
+            <%= f.label :min_stock, "Stock mínimo" %>
+          </div>
+          <div class="col-xs-10">
+            <%= f.number_field :min_stock, placeholder: "Stock Mínimo", class: "form-control" %>
+          </div>
         </div>
 
-        <div class="form-group">
-          <%= f.collection_select :category_id, Category.all, :id, :name, {selected: @item.category_id, include_blank: 'Seleccione Categoría'}, {class: "form-control"} %>
+        <div class="form-group row">
+          <div class="col-xs-2">
+            <%= f.label :category_id, "Categoría" %>
+          </div>
+          <div class="col-xs-10">
+            <%= f.collection_select :category_id, Category.all, :id, :name,
+                  {selected: @item.category_id, include_blank: 'Seleccione Categoría'}, 
+                  {class: "form-control"} %>
+          </div>
         </div>
 
-        <div class="form-group">
-          <%= f.text_field :price, placeholder: "Precio", class: "form-control" %>
+        <div class="form-group row">
+          <div class="col-xs-2">
+            <%= f.label :price, "Precio" %>
+          </div>
+          <div class="col-xs-10">
+            <div class="input-group">
+              <div class="input-group-addon">$</div>
+              <%= f.text_field :price, placeholder: "Precio", class: "form-control" %>
+            </div>
+          </div>
         </div>
 
         <%= f.submit "Aceptar", class: "btn btn-success" %>
