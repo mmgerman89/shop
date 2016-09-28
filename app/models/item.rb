@@ -27,6 +27,10 @@ class Item < ApplicationRecord
   end
 
   def brand_name
-  	self.brand.name
+  	if self.brand
+  		self.brand.name
+  	else
+  		''
+  	end
   end
 end
