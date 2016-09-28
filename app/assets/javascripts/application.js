@@ -13,5 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery-readyselector
 //= require 'bootstrap-sass-official'
+//= require 'typeahead.js.js'
 //= require_tree .

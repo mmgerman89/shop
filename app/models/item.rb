@@ -25,4 +25,8 @@ class Item < ApplicationRecord
   def item_description
   	self.description + ( (self.brand != nil) ? ' ' + self.brand.name : '' )
   end
+
+  def brand_name
+  	self.brand.name
+  end
 end
