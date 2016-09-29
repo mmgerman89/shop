@@ -68,6 +68,13 @@ class Search
 	    return items, number_of_pages
 	end
 
+	def sales
+		sales = Sale.order(date: :desc).offset(@offset).limit(@page_size)
+		@number_of_records = Sale.count
+		
+		return sales, number_of_pages
+	end
+
 	private
 
 	def name_condition

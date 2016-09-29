@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: sales
+#
+#  id         :integer          not null, primary key
+#  number     :integer
+#  date       :date
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: 1
+  date: 2016-09-29
+
+two:
+  number: 1
+  date: 2016-09-29

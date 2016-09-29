@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :sales
   get 'validate_suggested_brand/index'
 
   resources :items
