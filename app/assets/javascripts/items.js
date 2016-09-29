@@ -42,7 +42,7 @@ $(document).ready(function() {
     		success: function(res){
     			if (res == false){
     				// Marca no válida
-    				$('#item_brand').focus();
+    				//$('#item_brand').focus();
     				$('#item_brand').css('border-color', 'red');
     			}else{
     				// Marca correcta
