@@ -12,4 +12,8 @@
 class Sale < ApplicationRecord
 	validates :number, presence: true
 	validates :date, presence: true
+
+	def total
+		0 #TODO
+	end
 end

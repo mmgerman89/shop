@@ -6,9 +6,9 @@ class TownsController < ApplicationController
   # GET /towns.json
   def index
     @page = (params[:page] || 0).to_i
-    keywords = params[:keywords]
+    @keywords = params[:keywords]
 
-    search = Search.new(@page, PAGE_SIZE, keywords)
+    search = Search.new(@page, PAGE_SIZE, @keywords)
     @towns, @number_of_pages = search.towns_by_name
   end
 

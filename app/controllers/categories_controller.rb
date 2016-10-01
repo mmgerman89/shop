@@ -6,9 +6,9 @@ class CategoriesController < ApplicationController
   # GET /categories.json
   def index
     @page = (params[:page] || 0).to_i
-    keywords = params[:keywords]
+    @keywords = params[:keywords]
 
-    search = Search.new(@page, PAGE_SIZE, keywords)
+    search = Search.new(@page, PAGE_SIZE, @keywords)
     @categories, @number_of_pages = search.categories_by_name
   end
 

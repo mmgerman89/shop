@@ -6,9 +6,9 @@ class BrandsController < ApplicationController
   # GET /brands.json
   def index
     @page = (params[:page] || 0).to_i
-    keywords = params[:keywords]
+    @keywords = params[:keywords]
 
-    search = Search.new(@page, PAGE_SIZE, keywords)
+    search = Search.new(@page, PAGE_SIZE, @keywords)
     @brands, @number_of_pages = search.brands_by_name
   end
 

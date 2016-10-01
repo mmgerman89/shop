@@ -69,9 +69,14 @@ class Search
 	end
 
 	def sales
-		sales = Sale.order(date: :desc).offset(@offset).limit(@page_size)
-		@number_of_records = Sale.count
-		
+		if @keywords.present?
+		    sales = Sale.where(number_condition).order(date: :desc).offset(@offset).limit(@page_size)
+		    @number_of_records = Item.where(description_condition).count
+	    else
+		    sales = Sale.order(date: :desc).offset(@offset).limit(@page_size)
+			@number_of_records = Sale.count
+	    end
+
 		return sales, number_of_pages
 	end
 
@@ -83,6 +88,10 @@ class Search
 
 	def description_condition
 		description_condition = "unaccent(lower(description)) LIKE '%#{I18n.transliterate(@keywords.downcase)}%'"
+	end
+
+	def number_condition
+		number_condition = "number = #{@keywords.to_i}"
 	end
 
 	def number_of_pages

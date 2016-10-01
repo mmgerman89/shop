@@ -6,9 +6,9 @@ class UnitsController < ApplicationController
   # GET /units.json
   def index
     @page = (params[:page] || 0).to_i
-    keywords = params[:keywords]
+    @keywords = params[:keywords]
 
-    search = Search.new(@page, PAGE_SIZE, keywords)
+    search = Search.new(@page, PAGE_SIZE, @keywords)
     @units, @number_of_pages = search.units_by_name
   end
 
