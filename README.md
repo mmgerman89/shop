@@ -1,5 +1,5 @@
 # Sistema de Gestión de Negocios
-Sistema de Gestión de negocios con Ruby on Rails 5. Este sistema es parte de un proyecto personal que voy explicando en mi blog: http://blog.gmartinez.net/category/proyecto/
+Sistema de Gestión de negocios con Ruby on Rails 5. Este sistema es parte de un proyecto personal que voy explicando en mi blog: http://blog.gmartinez.net/category/proyecto-shop/
 
 Tecnología utilizada:
   - Ruby on Rails 5
