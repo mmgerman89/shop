@@ -1,8 +1,12 @@
 require 'test_helper'
 
 class SalesControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
+    sign_in users(:admin)
     @sale = sales(:one)
+    @sale2 = Sale.new(number: 159, date: '20161001')
   end
 
   test "should get index" do
@@ -20,7 +24,7 @@ class SalesControllerTest < ActionDispatch::IntegrationTest
       post sales_url, params: { sale: { date: @sale.date, number: @sale.number } }
     end
 
-    assert_redirected_to sale_url(Sale.last)
+    assert_redirected_to sales_url
   end
 
   test "should show sale" do
@@ -35,7 +39,7 @@ class SalesControllerTest < ActionDispatch::IntegrationTest
 
   test "should update sale" do
     patch sale_url(@sale), params: { sale: { date: @sale.date, number: @sale.number } }
-    assert_redirected_to sale_url(@sale)
+    assert_redirected_to sales_url
   end
 
   test "should destroy sale" do
