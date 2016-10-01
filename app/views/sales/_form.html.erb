@@ -1,27 +1,40 @@
-<%= form_for(sale) do |f| %>
-  <% if sale.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(sale.errors.count, "error") %> prohibited this sale from being saved:</h2>
 
-      <ul>
-      <% sale.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class="container-fluid">
+  <div class="row">
+    <div class="panel-body">
+      <%= form_for(sale) do |f| %>
+        <% if sale.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(sale.errors.count, "error") %> prohibited this sale from being saved:</h2>
+
+            <ul>
+            <% sale.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="form-group row">
+          <div class="col-xs-2">
+            <%= f.label :number, "Número" %>
+          </div>
+          <div class="col-xs-10">
+            <%= f.text_field :number, autofocus: true, placeholder: "Número", class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-xs-2">
+            <%= f.label :date, "Fecha" %>
+          </div>
+          <div class="col-xs-10">
+            <%= f.date_field :date, placeholder: "Fecha", class: "form-control" %>
+          </div>
+        </div>
+
+        <%= f.submit "Aceptar", class: "btn btn-success" %>
       <% end %>
-      </ul>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :number %>
-    <%= f.number_field :number %>
   </div>
-
-  <div class="field">
-    <%= f.label :date %>
-    <%= f.date_select :date %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
