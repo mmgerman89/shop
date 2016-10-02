@@ -28,11 +28,16 @@ $(document).ready(function() {
 
 	$('#item_brand').typeahead('val', $('#item_brand_name').val() );
 
-	$('#item_brand').on('typeahead:select', function(event, data){
-        $('#item_brand_id').val(data.id);
-    }).on('typeahead:change', function(object, datum){
-    	$(this).trigger('typeahead:_propia', datum)
-    }).on('blur', function() {
+	$('#item_brand').on('typeahead:select', function(object, datum){
+        $('#item_brand_id').val(datum.id);
+    });
+
+    $('#item_brand').on('typeahead:change', function(event, data){
+        $('#item_brand_id').val(data);
+    	$(this).trigger('typeahead:_propia', data)
+    });
+
+    $('#item_brand').on('blur', function() {
     	data = $('#item_brand').val();
     	$(this).trigger('typeahead:_propia', data)
     	url = '/validate_suggested_brand';
@@ -40,16 +45,18 @@ $(document).ready(function() {
     		url: url,
     		data: { brand_name: data },
     		success: function(res){
-    			if (res == false){
+    			if (["0"].valid == false){
     				// Marca no válida
-    				//$('#item_brand').focus();
     				$('#item_brand').css('border-color', 'red');
     			}else{
     				// Marca correcta
+                    $('#item_brand_id').val(res["0"].id.toString());
     				$('#item_brand').css('border-color', '#ccc');
     			}
     		}
     	});
-    }).on('typeahead:_propia', function(evt, datum){
+    });
+
+    $('#item_brand').on('typeahead:_propia', function(evt, datum){
     });
 });

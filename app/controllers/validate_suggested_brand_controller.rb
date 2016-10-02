@@ -7,10 +7,10 @@ class ValidateSuggestedBrandController < ApplicationController
 			brand = Brand.where(condition)
 		end
 		if !brand.empty?
-			valid = true
+			result = [valid: true, id: brand.ids]
 		else
-			valid = false
+			result = [valid: false, id: 0]
 		end
-		render json: valid
+		render json: result
   end
 end
