@@ -11,7 +11,8 @@
 class Category < ApplicationRecord
 	include ActiveModel::Validations
 	
-	validates :name, presence: true, uniqueness: { case_sensitive: false }
+	validates :name, presence: true
 
-	validates_with ValidateUnaccent, model: self
+	validates_with ValidateUnaccent, model: self, action_name: "create", on: :create
+	validates_with ValidateUnaccent, model: self, action_name: "update", on: :update
 end
