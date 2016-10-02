@@ -13,6 +13,5 @@ class Category < ApplicationRecord
 	
 	validates :name, presence: true
 
-	validates_with ValidateUnaccent, model: self, action_name: "create", on: :create
-	validates_with ValidateUnaccent, model: self, action_name: "update", on: :update
+	validates_with ValidateUnaccent, model: self
 end
