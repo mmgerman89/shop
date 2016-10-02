@@ -21,4 +21,4 @@
 .byebug_history
 
 # Ignore Database config
-/congi/database.yml
+/config/database.yml
