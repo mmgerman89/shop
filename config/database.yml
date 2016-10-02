@@ -17,4 +17,6 @@ test:
 
 production:
   <<: *default
-  database: shop_production
+  database: shopgm_production
+  username: shopgm
+  password: <%= ENV['MYAPP_DATABASE_PASSWORD']

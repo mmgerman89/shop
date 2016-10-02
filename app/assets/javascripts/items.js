@@ -3,9 +3,9 @@ $(document).ready(function() {
 	var brands_suggested = new Bloodhound({
 	  datumTokenizer: Bloodhound.tokenizers.obj.whitespace("name"),
 	  queryTokenizer: Bloodhound.tokenizers.whitespace,
-	  prefetch: 'http://localhost:3000/brands_suggestion',
+	  prefetch: 'https://shopgm.herokuapp.com/brands_suggestion',
 	  remote: {
-	  	url: 'http://localhost:3000/brands_suggestion?query=%QUERY',
+	  	url: 'https://shopgm.herokuapp.com/brands_suggestion?query=%QUERY',
     	wildcard: '%QUERY'
 	  }
 	});
