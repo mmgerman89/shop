@@ -39,7 +39,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
 
   test "should update category" do
     patch category_url(@category), params: { category: { name: @category.name } }
-    assert_response :success
+    assert_redirected_to categories_url
   end
 
   test "should destroy category" do

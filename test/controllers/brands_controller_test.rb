@@ -40,7 +40,7 @@ class BrandsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update brand" do
     patch brand_url(@brand), params: { brand: { name: @brand.name } }
-    assert_response :success
+    assert_redirected_to brands_url
   end
 
   test "should destroy brand" do
