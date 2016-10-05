@@ -1,14 +1,66 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+    		<div class="invoice-title">
+    			<h2>Venta</h2>
+    			<h3 class="pull-right">Número # <%= @sale.number %></h3>
+    		</div>
+    		<hr>
+    		<div class="row">
+    			<div class="col-xs-6">
+    			</div>
+    			<div class="col-xs-6 text-right">
+    				<address>
+    					<strong>Fecha:</strong><br>
+    					<%= @sale.date.strftime("%d/%m/%Y") %><br><br>
+    				</address>
+    			</div>
+    		</div>
+    		<div class="row">
+		    	<div class="col-md-12">
+		    		<div class="panel panel-default">
+		    			<div class="panel-heading">
+		    				<h3 class="panel-title"><strong>Detalles de Venta</strong></h3>
+		    			</div>
+		    			<div class="panel-body">
+		    				<div class="table-responsive">
+		    					<table class="table table-condensed">
+		    						<thead>
+		                                <tr>
+		        							<td><strong>Nº</strong></td>
+		        							<td><strong>Descripción</strong></td>
+		        							<td class="text-center"><strong>Cantidad</strong></td>
+		        							<td class="text-center"><strong>Precio</strong></td>
+		        							<td class="text-right"><strong>Subtotal</strong></td>
+		                                </tr>
+		    						</thead>
+		    						<tbody>
+		    							<% @sale.sale_details.each do |detail| %>
+			    							<tr>
+			    								<td><%= detail.number %></td>
+			    								<td><%= detail.item.description %></td>
+			    								<td class="text-center"><%= detail.qty %></td>
+			    								<td class="text-center"><%= number_to_currency(detail.price) %></td>
+			    								<td class="text-right"><%= number_to_currency(detail.subtotal) %></td>
+			    							</tr>
+		    							<% end %>
 
-<p>
-  <strong>Number:</strong>
-  <%= @sale.number %>
-</p>
+		    							<tr>
+		    								<td class="thick-line"></td>
+		    								<td class="thick-line"></td>
+		    								<td class="thick-line"></td>
+		    								<td class="thick-line text-center"><h3>Total</h3></td>
+		    								<td class="thick-line text-right"><h3><%= number_to_currency(@sale.total) %></h3></td>
+		    							</tr>
+		    						</tbody>
+		    					</table>
+		    				</div>
+		    			</div>
+		    		</div>
+		    	</div>
+		    </div>
+    	</div>
+    </div>
+</div>
 
-<p>
-  <strong>Date:</strong>
-  <%= @sale.date %>
-</p>
-
-<%= link_to 'Edit', edit_sale_path(@sale) %> |
-<%= link_to 'Back', sales_path %>
+<%= link_to 'Volver', sales_path %>

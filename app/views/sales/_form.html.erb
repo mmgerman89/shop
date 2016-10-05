@@ -2,37 +2,68 @@
 <div class="container-fluid">
   <div class="row">
     <div class="panel-body">
-      <%= form_for(sale) do |f| %>
-        <% if sale.errors.any? %>
+      <%= form_for(@sale) do |f| %>
+        <% if @sale.errors.any? %>
           <div id="error_explanation">
-            <h2><%= pluralize(sale.errors.count, "error") %> prohibited this sale from being saved:</h2>
+            <h2><%= pluralize(@sale.errors.count, "error") %> prohibited this sale from being saved:</h2>
 
             <ul>
-            <% sale.errors.full_messages.each do |message| %>
+            <% @sale.errors.full_messages.each do |message| %>
               <li><%= message %></li>
             <% end %>
             </ul>
           </div>
         <% end %>
 
-        <div class="form-group row">
-          <div class="col-xs-2">
-            <%= f.label :number, "Número" %>
+        <div class="row">
+          <div class="col-xs-offset-2 col-xs-4">
+            <div class="form-group">
+              <div class="col-xs-2">
+                <%= f.label :number, "Número" %>
+              </div>
+              <div class="col-xs-4">
+                <%= f.text_field :number, autofocus: true, placeholder: "Número", class: "form-control" %>
+              </div>
+            </div>
           </div>
-          <div class="col-xs-10">
-            <%= f.text_field :number, autofocus: true, placeholder: "Número", class: "form-control" %>
+          <div class="col-xs-6">
+            <div class="form-group">
+              <div class="col-xs-2">
+                <%= f.label :date, "Fecha" %>
+              </div>
+              <div class="col-xs-4">
+                <%= f.date_field :date, placeholder: "Fecha", class: "form-control" %>
+              </div>
+            </div>
           </div>
         </div>
-
-        <div class="form-group row">
-          <div class="col-xs-2">
-            <%= f.label :date, "Fecha" %>
-          </div>
-          <div class="col-xs-10">
-            <%= f.date_field :date, placeholder: "Fecha", class: "form-control" %>
-          </div>
+        <br>
+        <div class="row">
+          <%= f.fields_for @sale.sale_details do |detail_form| %>
+            <div class="col-xs-2">
+              <div class="form-group">
+                <div class="col-xs-2">
+                  <%= detail_form.label :number, "Número" %>
+                </div>
+                <div class="col-xs-4">
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-4">
+              Item
+            </div>
+            <div class="col-xs-2">
+              Cant.
+            </div>
+            <div class="col-xs-2">
+              Precio
+            </div>
+            <div class="col-xs-2">
+              Subtotal
+            </div>
+          <% end %>
         </div>
-
+        <br>
         <%= f.submit "Aceptar", class: "btn btn-success" %>
       <% end %>
     </div>

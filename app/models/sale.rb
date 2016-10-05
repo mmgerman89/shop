@@ -10,10 +10,21 @@
 #
 
 class Sale < ApplicationRecord
+	has_many :sale_details#, inverse_of: :sales
+
 	validates :number, presence: true
 	validates :date, presence: true
 
+	accepts_nested_attributes_for :sale_details
+
+
 	def total
-		0 #TODO
+		details = self.sale_details
+
+		total = 0.0
+		details.flat_map do |d|
+			total += d.qty * d.price
+		end
+		total
 	end
 end

@@ -4,6 +4,7 @@
       <%= render partial: "pager", locals: { keywords: @keywords, page: @page } %>
     </tr>
     <tr>
+      <th></th>
       <th>Número</th>
       <th>Fecha</th>
       <th>Total</th>
@@ -14,6 +15,11 @@
   <tbody>
     <% @sales.each do |sale| %>
       <tr>
+        <td>
+          <%= button_to sale_path(sale), {method: :get, class: "btn btn-info"} do %>
+            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"> </span> Ver
+          <% end %>
+        </td>
         <td><%= sale.number %></td>
         <td><%= sale.created_at.strftime("%d/%m/%Y") %></td>
         <td><%= number_to_currency(sale.total) %></td>
