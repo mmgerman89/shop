@@ -19,7 +19,8 @@ class SalesController < ApplicationController
 
   # GET /sales/new
   def new
-    @sale = Sale.new
+    @sale = Sale.new(date: Date::current, number: Sale.count + 1)
+    @sale.sale_details.build
   end
 
   # GET /sales/1/edit
@@ -74,6 +75,6 @@ class SalesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sale_params
-      params.require(:sale).permit(:number, :date, sale_details_attributes: [:number, :id, :item_id, :qty, :price] )
+      params.require(:sale).permit(:number, :date, sale_details_attributes: [:id, :sale_id, :item_id, :number, :qty, :price, :_destroy] )
     end
 end

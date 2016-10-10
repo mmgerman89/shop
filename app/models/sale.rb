@@ -10,12 +10,13 @@
 #
 
 class Sale < ApplicationRecord
-	has_many :sale_details#, inverse_of: :sales
+	has_many :sale_details, inverse_of: :sale, dependent: :destroy
 
 	validates :number, presence: true
 	validates :date, presence: true
 
-	accepts_nested_attributes_for :sale_details
+	accepts_nested_attributes_for :sale_details, reject_if: :sale_detail_rejectable?,
+									allow_destroy: true
 
 
 	def total
@@ -27,4 +28,10 @@ class Sale < ApplicationRecord
 		end
 		total
 	end
+
+	private
+
+		def sale_detail_rejectable?(att)
+			att[:item_id].blank? || att[:qty].blank? || att[:price].blank? || att[:qty].to_f <= 0 || att[:price].to_f <= 0
+		end
 end

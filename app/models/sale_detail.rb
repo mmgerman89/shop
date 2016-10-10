@@ -13,7 +13,7 @@
 #
 
 class SaleDetail < ApplicationRecord
-	belongs_to :sale#, inverse_of: :sale_details
+	belongs_to :sale
 	belongs_to :item
 
 	validates :item_id, presence: true
@@ -22,6 +22,14 @@ class SaleDetail < ApplicationRecord
 
 
 	def subtotal
-		self.qty * self.price
+		self.qty ? qty * unit_price : 0
+	end
+
+	def unit_price
+		if persisted?
+			price
+		else
+			item ? item.price : 0
+		end
 	end
 end
