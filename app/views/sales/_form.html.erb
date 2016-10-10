@@ -16,41 +16,32 @@
         <% end %>
 
         <div class="row">
-          <div class="col-xs-offset-2 col-xs-4">
+          <div class="col-xs-5 col-md-4">
             <div class="form-group">
-              <div class="col-xs-2">
+              <div class="col-xs-6 col-md-4 text-left">
                 <%= f.label :number, "Número" %>
               </div>
-              <div class="col-xs-4">
-                <%= f.text_field :number, autofocus: true, placeholder: "Número", class: "form-control" %>
+              <div class="col-xs-6 col-md-4">
+                <%= f.text_field :number, placeholder: "Número", class: "form-control" %>
               </div>
             </div>
           </div>
-          <div class="col-xs-6">
+          <div class="col-xs-6 col-xs-offset-1 col-md-4 col-md-offset-4">
             <div class="form-group">
-              <div class="col-xs-2">
+              <div class="col-xs-4 col-md-4 text-right">
                 <%= f.label :date, "Fecha" %>
               </div>
-              <div class="col-xs-4">
+              <div class="col-xs-8 col-md-6 text-right">
                 <%= f.date_field :date, placeholder: "Fecha", class: "form-control" %>
               </div>
             </div>
           </div>
         </div>
+        <hr>
         <br>
-        <div class="row">
-          <%= f.fields_for @sale.sale_details do |detail_form| %>
-            <div class="col-xs-2">
-              <div class="form-group">
-                <div class="col-xs-2">
-                  <%= detail_form.label :number, "Número" %>
-                </div>
-                <div class="col-xs-4">
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-4">
-              Item
+          <div class="row">
+            <div class="col-xs-5">
+              Descripción
             </div>
             <div class="col-xs-2">
               Cant.
@@ -61,8 +52,17 @@
             <div class="col-xs-2">
               Subtotal
             </div>
-          <% end %>
-        </div>
+          </div>
+          <div id="sale_details">
+            <%= f.fields_for :sale_details do |builder| %>
+              <%= render partial: 'sale_detail_fields', locals: { f: builder } %>
+            <% end %>
+            <div class="links">
+              <div class="col-xs-2 col-xs-offset-5 text-center">
+                <%= link_to_add_association "Nueva linea", f, :sale_details %>
+              </div>
+            </div>
+          </div>
         <br>
         <%= f.submit "Aceptar", class: "btn btn-success" %>
       <% end %>

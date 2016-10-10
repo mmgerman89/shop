@@ -59,3 +59,6 @@ gem 'annotate'
 
 # Front-end
 gem 'bower-rails'
+
+# Nested forms
+gem 'cocoon'

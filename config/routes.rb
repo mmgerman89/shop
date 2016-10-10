@@ -1,15 +1,19 @@
 Rails.application.routes.draw do
+  root to: 'dashboard#index'
+  
+  devise_for :users
+
   resources :sales
-  get 'validate_suggested_brand/index'
+  resources :sale_details
+
 
   resources :items
   resources :units
   resources :towns
   resources :categories
   resources :brands
-  devise_for :users
-  root to: 'dashboard#index'
 
+  get 'validate_suggested_brand/index'
   get '/brands_suggestion', to: 'brands_suggestion#index'
   get '/validate_suggested_brand', to: 'validate_suggested_brand#index'
 

@@ -46,6 +46,7 @@ GEM
     bower-rails (0.11.0)
     builder (3.2.2)
     byebug (9.0.5)
+    cocoon (1.2.9)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.2.x)
@@ -174,6 +175,7 @@ DEPENDENCIES
   annotate
   bower-rails
   byebug
+  cocoon
   coffee-rails (~> 4.2)
   devise
   jbuilder (~> 2.5)
@@ -191,4 +193,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   1.12.5
+   1.13.2
