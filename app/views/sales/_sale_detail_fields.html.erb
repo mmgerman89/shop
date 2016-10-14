@@ -3,7 +3,8 @@
     <div class="col-xs-5">
       <div class="form-group">
           <%= f.label :item_id, class: "sr-only" %>
-          <%= f.text_field :item_id, autofocus: true, placeholder: "Item", class: "form-control" %>
+          <%= f.text_field :item, autofocus: true, placeholder: "Artículo", class: "form-control" %>
+          <%= f.hidden_field :item_id %>
       </div>
     </div>
     <div class="col-xs-2">
