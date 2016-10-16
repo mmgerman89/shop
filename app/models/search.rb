@@ -70,10 +70,10 @@ class Search
 
 	def sales
 		if @keywords.present?
-		    sales = Sale.where(number_condition).order(date: :desc).offset(@offset).limit(@page_size)
+		    sales = Sale.where(number_condition).order(number: :desc).offset(@offset).limit(@page_size)
 		    @number_of_records = Item.where(description_condition).count
 	    else
-		    sales = Sale.order(date: :desc).offset(@offset).limit(@page_size)
+		    sales = Sale.order(number: :desc).offset(@offset).limit(@page_size)
 			@number_of_records = Sale.count
 	    end
 
