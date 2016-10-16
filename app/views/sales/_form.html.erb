@@ -1,6 +1,7 @@
 
 <div class="container-fluid">
   <div class="row">
+
     <div class="panel-body">
       <%= form_for(@sale) do |f| %>
         <% if @sale.errors.any? %>
@@ -39,33 +40,21 @@
         </div>
         <hr>
         <br>
-          <div class="row">
-            <div class="col-xs-5">
-              Descripción
-            </div>
-            <div class="col-xs-2">
-              Cant.
-            </div>
-            <div class="col-xs-2">
-              Precio
-            </div>
-            <div class="col-xs-2">
-              Subtotal
-            </div>
-          </div>
-          <div id="sale_details">
-            <%= f.fields_for :sale_details do |builder| %>
-              <%= render partial: 'sale_detail_fields', locals: { f: builder } %>
-            <% end %>
-            <div class="links">
-              <div class="col-xs-2 col-xs-offset-5 text-center">
-                <%= link_to_add_association "Nueva linea", f, :sale_details %>
-              </div>
-            </div>
+
+          <div class="panel-body" id="sale-details">
+            <%= (@sale.sale_details.count > 0) ? render(partial: 'table', locals: { sale: @sale }) : 'No hay detalles cargados' %>
           </div>
         <br>
         <%= f.submit "Aceptar", class: "btn btn-success" %>
       <% end %>
+
+          <div class="row">
+
+            <div class="col-xs-2 col-xs-offset-5 text-center">
+              <%= link_to "Nueva linea", new_sale_sale_detail_path(sale_id: @sale.id), remote: true, class: "btn btn-info" %>
+              <div class="modal fade" id="new-detail-modal" title="Modal"></div>
+            </div>
+          </div>
     </div>
   </div>
 </div>

@@ -20,6 +20,8 @@ class SaleDetail < ApplicationRecord
 	validates :qty, presence: true
 	validates :price, presence: true
 
+	accepts_nested_attributes_for :item
+
 
 	def subtotal
 		self.qty ? qty * unit_price : 0

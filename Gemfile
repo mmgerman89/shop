@@ -62,3 +62,6 @@ gem 'bower-rails'
 
 # Nested forms
 gem 'cocoon'
+
+# Modal
+gem 'bootstrap-modal-rails'

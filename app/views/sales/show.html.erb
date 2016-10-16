@@ -23,38 +23,7 @@
 		    				<h3 class="panel-title"><strong>Detalles de Venta</strong></h3>
 		    			</div>
 		    			<div class="panel-body">
-		    				<div class="table-responsive">
-		    					<table class="table table-condensed">
-		    						<thead>
-		                                <tr>
-		        							<td><strong>Nº</strong></td>
-		        							<td><strong>Descripción</strong></td>
-		        							<td class="text-center"><strong>Cantidad</strong></td>
-		        							<td class="text-center"><strong>Precio</strong></td>
-		        							<td class="text-right"><strong>Subtotal</strong></td>
-		                                </tr>
-		    						</thead>
-		    						<tbody>
-		    							<% @sale.sale_details.each do |detail| %>
-			    							<tr>
-			    								<td><%= detail.number %></td>
-			    								<td><%= detail.item.description %></td>
-			    								<td class="text-center"><%= detail.qty %></td>
-			    								<td class="text-center"><%= number_to_currency(detail.price) %></td>
-			    								<td class="text-right"><%= number_to_currency(detail.subtotal) %></td>
-			    							</tr>
-		    							<% end %>
-
-		    							<tr>
-		    								<td class="thick-line"></td>
-		    								<td class="thick-line"></td>
-		    								<td class="thick-line"></td>
-		    								<td class="thick-line text-center"><h3>Total</h3></td>
-		    								<td class="thick-line text-right"><h3><%= number_to_currency(@sale.total) %></h3></td>
-		    							</tr>
-		    						</tbody>
-		    					</table>
-		    				</div>
+		    				<%= render partial: 'table', locals: { sale: @sale } %>
 		    			</div>
 		    		</div>
 		    	</div>

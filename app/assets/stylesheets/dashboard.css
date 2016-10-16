@@ -12,6 +12,11 @@ body {
 }
 
 
+body #new-detail-modal{
+  width: 700px;
+  margin-left: -350px;
+}
+
 /*
  * Global add-ons
  */
@@ -45,7 +50,7 @@ body,html{
 
   nav.sidebar {
     position: fixed;
-    z-index: 9999;
+    z-index: 1;
     margin-top: 10px;
   }
 
@@ -191,7 +196,7 @@ span.twitter-typeahead .tt-dropdown-menu {
   position: absolute;
   top: 100%;
   left: 0;
-  z-index: 1000;
+  z-index: 1050;
   display: none;
   float: left;
   min-width: 160px;

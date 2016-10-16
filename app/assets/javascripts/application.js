@@ -15,6 +15,8 @@
 //= require turbolinks
 //= require jquery-readyselector
 //= require 'bootstrap-sass-official'
-//= require 'typeahead.js.js'
 //= require_tree .
 //= require cocoon
+//= require bootstrap-modal
+//= require bootstrap-modalmanager
+//= require 'typeahead.js.js'

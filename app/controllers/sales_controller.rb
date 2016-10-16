@@ -1,5 +1,5 @@
 class SalesController < ApplicationController
-  before_action :set_sale, only: [:show, :edit, :update, :destroy]
+  before_action :set_sale, only: [:create, :show, :edit, :update, :destroy]
   PAGE_SIZE = 10
 
   # GET /sales
@@ -19,8 +19,9 @@ class SalesController < ApplicationController
 
   # GET /sales/new
   def new
-    @sale = Sale.new(date: Date::current, number: Sale.count + 1)
+    @sale = Sale.create(date: Date::current, number: Sale.count + 1)
     @sale.sale_details.build
+    params[:sale_id] = @sale.id.to_s
   end
 
   # GET /sales/1/edit
@@ -30,8 +31,6 @@ class SalesController < ApplicationController
   # POST /sales
   # POST /sales.json
   def create
-    @sale = Sale.new(sale_params)
-
     respond_to do |format|
       if @sale.save
         format.html { redirect_to sales_url, notice: 'Venta creada.' }

@@ -1,0 +1,10 @@
+console.log("asdasdas");
+$("ul.errors").html("");
+<% if @sale.sale_details.last.errors.any? %>
+	<% @sale.sale_details.last.errors.full_messages.each do |message| %>
+		$("ul.errors").append($("<li />").html(" <%= message.html_safe %> "));
+	<% end %>
+<% else %>
+	$("#sale-details").html("<%= escape_javascript(render(partial: 'sales/table', locals: { sale: @sale })) %>");
+	$("#new-detail-modal").modal("hide");
+<% end %>
