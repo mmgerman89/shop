@@ -2,8 +2,8 @@
 	<tr>
 		<td><%= detail.number %></td>
 		<td><%= detail.item.description %></td>
-		<td class="text-center"><%= detail.qty %></td>
-		<td class="text-center"><%= number_to_currency(detail.price) %></td>
+		<td class="text-right"><%= detail.qty %></td>
+		<td class="text-right"><%= number_to_currency(detail.price) %></td>
 		<td class="text-right"><%= number_to_currency(detail.subtotal) %></td>
 	</tr>
 <% end %>
