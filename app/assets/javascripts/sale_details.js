@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
-    $("#new-detail-modal").on("shown.bs.modal", function() {
+    $(document).on("shown.bs.modal", "#new-detail-modal", function() {
+
 
     	var items_suggested = new Bloodhound({
     	  datumTokenizer: Bloodhound.tokenizers.obj.whitespace("description"),
@@ -27,21 +28,22 @@ $(document).ready(function(){
           }
     	});
 
+        $('#sale_details_item').focus();
 
     	$('#sale_details_item').typeahead('val', $('#sale_details_item_description').val() );
 
     	$('#sale_details_item').on('typeahead:select', function(object, datum){
             $('#sale_details_item').val(datum.id);
+            $('#sale_details_qty').focus();
+            subtotal();
         });
 
         $('#sale_details_item').on('typeahead:change', function(event, data){
             $('#sale_details_item').val(data);
-        	$(this).trigger('typeahead:_propia', data)
         });
 
         $('#sale_details_item').on('blur', function() {
         	data = $('#sale_details_item').val();
-        	$(this).trigger('typeahead:_propia', data)
         	url = '/validate_suggested_item';
         	$.ajax({
         		url: url,
@@ -53,13 +55,25 @@ $(document).ready(function(){
         			}else{
         				// Item correcto
                         $('#sale_details_item_id').val(res["0"].id.toString());
+                        $('#sale_details_price').val(res["0"].price.toString());
         				$('#sale_details_item').css('border-color', '#ccc');
+                        subtotal();
         			}
         		}
         	});
         });
 
-        $('#sale_details_item_item').on('typeahead:_propia', function(evt, datum){
+        function subtotal() {
+            $('#sale_details_subtotal').val($('#sale_details_qty').val() * $('#sale_details_price').val());
+        };
+
+        $('#sale_details_qty').blur(function(){
+             subtotal();
         });
+
+        $('#sale_details_price').blur(function(){
+             subtotal();
+        });
+
     });
 });

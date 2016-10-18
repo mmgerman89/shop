@@ -7,7 +7,7 @@ class ValidateSuggestedItemController < ApplicationController
 			item = Item.where(condition)
 		end
 		if !item.empty?
-			result = [valid: true, id: item.first.id]
+			result = [valid: true, id: item.first.id, price: item.first.price]
 		else
 			result = [valid: false, id: 0]
 		end
