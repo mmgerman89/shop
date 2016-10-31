@@ -1,3 +1,5 @@
+<% show_actions = show_actions.nil? ? false : show_actions %>
+
 <div class="table-responsive">
 	<table class="table table-condensed">
 		<thead>
@@ -7,11 +9,12 @@
 				<td class="text-right"><strong>Cantidad</strong></td>
 				<td class="text-right"><strong>Precio</strong></td>
 				<td class="text-right"><strong>Subtotal</strong></td>
+				<%= show_actions ? '<td colspan="2"></td>'.html_safe : "" %> 
             </tr>
 		</thead>
 		<tbody>
 			<div id="sale-details-index">
-				<%= render "sale_details/index" %>
+				<%= render partial: "sale_details/index", locals: {show_actions: show_actions} %>
 			</div>
 			<tr>
 				<td class="thick-line"></td>
@@ -19,6 +22,7 @@
 				<td class="thick-line"></td>
 				<td class="thick-line text-right"><h3>Total</h3></td>
 				<td class="thick-line text-right"><h3><%= number_to_currency(sale.total) %></h3></td>
+				<%= show_actions ? '<td colspan="2" class=""></td>'.html_safe : "" %> 
 			</tr>
 		</tbody>
 	</table>

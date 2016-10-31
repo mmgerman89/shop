@@ -41,7 +41,7 @@
         <hr>
         <br>
         <div class="panel-body" id="sale-details">
-          <%= (@sale.sale_details.count > 0) ? render(partial: 'table', locals: { sale: @sale }) : 'No hay detalles cargados' %>
+          <%= (@sale.sale_details.count > 0) ? render(partial: 'table', locals: { sale: @sale, show_actions: true }) : 'No hay detalles cargados' %>
         </div>
         <div class="row">
           <div class="col-xs-2 col-xs-offset-5 text-center">

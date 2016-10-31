@@ -17,6 +17,15 @@ class SaleDetailsController < ApplicationController
 		@sale.save!
 	end
 
+	def edit
+	end
+
+	def update
+	end
+
+	def destroy
+	end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
