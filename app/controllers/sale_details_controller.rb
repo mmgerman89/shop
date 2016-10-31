@@ -7,7 +7,13 @@ class SaleDetailsController < ApplicationController
 	end
 
 	def create
-		@sale.sale_details << SaleDetail.new(sale_details_params)
+		sale_details = SaleDetail.new(sale_details_params)
+		if @sale.sale_details.last.nil?
+			sale_details.number = 1
+		else
+			sale_details.number = @sale.sale_details.last.number + 1
+		end
+		@sale.sale_details << sale_details
 		@sale.save!
 	end
 
