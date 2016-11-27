@@ -1,4 +1,3 @@
-console.log("_save.js.erb");
 $("ul.errors").html("");
 <% if @sale.sale_details.last.errors.any? %>
 	<% @sale.sale_details.last.errors.full_messages.each do |message| %>

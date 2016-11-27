@@ -54,7 +54,7 @@
             <%= f.label :unit_id, "Unidad" %>
           </div>
           <div class="col-xs-10">
-            <%= f.collection_select :unit_id, Unit.all, :id, :name, 
+            <%= f.collection_select :unit_id, @units, :id, :name, 
                   {selected: @item.unit_id, include_blank: 'Seleccione Unidad'},
                   {class: "form-control"} %>
           </div>
@@ -83,7 +83,7 @@
             <%= f.label :category_id, "Categoría" %>
           </div>
           <div class="col-xs-10">
-            <%= f.collection_select :category_id, Category.all, :id, :name,
+            <%= f.collection_select :category_id, @categories, :id, :name,
                   {selected: @item.category_id, include_blank: 'Seleccione Categoría'}, 
                   {class: "form-control"} %>
           </div>

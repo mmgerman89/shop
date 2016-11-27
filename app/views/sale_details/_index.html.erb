@@ -1,7 +1,7 @@
 <% @sale.sale_details.each do |detail| %>
 	<tr>
 		<td><%= detail.number %></td>
-		<td><%= detail.item.description %></td>
+		<td><%= detail.item.item_description %></td>
 		<td class="text-right"><%= detail.qty %></td>
 		<td class="text-right"><%= number_to_currency(detail.price) %></td>
 		<td class="text-right"><%= number_to_currency(detail.subtotal) %></td>
