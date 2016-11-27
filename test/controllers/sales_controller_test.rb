@@ -15,14 +15,14 @@ class SalesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    get new_sale_url
+    assert_difference('Sale.count') do
+      get new_sale_url
+    end
     assert_response :success
   end
 
   test "should create sale" do
-    assert_difference('Sale.count') do
-      post sales_url, params: { sale: { date: @sale.date, number: @sale.number } }
-    end
+    post sales_url, params: { id: @sale.id, sale: { date: @sale.date, number: @sale.number } }
 
     assert_redirected_to sales_url
   end
