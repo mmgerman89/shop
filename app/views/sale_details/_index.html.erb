@@ -6,8 +6,7 @@
 		<td class="text-right"><%= number_to_currency(detail.price) %></td>
 		<td class="text-right"><%= number_to_currency(detail.subtotal) %></td>
 		<% if show_actions %>
-			<td><%= link_to "Editar", edit_sale_sale_detail_path(detail.id) %> </td>
-			<td><%= link_to "Eliminar", sale_sale_detail_path(detail.id), method: :delete %> </td>
+			<td><%= link_to "Eliminar", sale_sale_detail_path(detail.sale.id, detail.id), method: :delete, remote: true %> </td>
 		<% end %>
 	</tr>
 <% end %>
