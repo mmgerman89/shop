@@ -48,7 +48,7 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update item" do
-    patch item_url(@item), params: { item: { brand_id: @item.brand_id, category_id: @item.category_id, code: @item.code, description: @item.description, min_stock: @item.min_stock, stock: @item.stock, unit_id: @item.unit_id } }
+    patch item_url(@item.id), params: { item: { brand_id: @item.brand_id, category_id: @item.category_id, code: @item.code, description: @item.description, min_stock: @item.min_stock, stock: @item.stock, unit_id: @item.unit_id } }
     assert_response :success
   end
 

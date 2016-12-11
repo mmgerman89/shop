@@ -20,19 +20,19 @@
 one:
   code: "123"
   description: "Artículo 0"
-  brand: 1
-  unit: 1
+  brand: brands(:one)
+  unit: units(:one)
   stock: 1
   min_stock: 1
-  category: 1
+  category: categories(:one)
   price: 35.5
 
 two:
   code: "124"
   description: "Artículo 1"
-  brand: 1
-  unit: 1
+  brand: brands(:one)
+  unit: units(:one)
   stock: 1
   min_stock: 1
-  category: 1
+  category: categories(:one)
   price: 35.5

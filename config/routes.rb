@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :brands
 
-  get 'validate_suggested_brand/index'
+  #get 'validate_suggested_brand/index'
   get '/brands_suggestion', to: 'brands_suggestion#index'
   get '/validate_suggested_brand', to: 'validate_suggested_brand#index'
 
