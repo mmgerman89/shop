@@ -1,5 +1,5 @@
 class Search
-	def initialize(page, page_size, keywords, current_user)
+	def initialize(page, page_size, keywords, current_user = nil)
 		@page = page
 		@page_size = page_size
 		@offset = page_size * page
