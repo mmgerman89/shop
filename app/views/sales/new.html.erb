@@ -5,6 +5,6 @@
 
 		<%= render 'form', sale: @sale %>
 
-		<%= link_to 'Volver', sales_path %>
+		<%= link_to 'Volver', sales_path, data: { confirm: "Se perderán los cambios ¿Está seguro?" } %>
 	</div>
 </div>

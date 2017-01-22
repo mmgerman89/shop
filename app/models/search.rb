@@ -1,9 +1,10 @@
 class Search
-	def initialize(page, page_size, keywords)
+	def initialize(page, page_size, keywords, current_user)
 		@page = page
 		@page_size = page_size
 		@offset = page_size * page
 		@keywords = keywords
+		@current_user = current_user
 	end
 
 
@@ -70,11 +71,11 @@ class Search
 
 	def sales
 		if @keywords.present?
-		    sales = Sale.where(number_condition).order(number: :desc).offset(@offset).limit(@page_size)
+		    sales = Sale.where(sale_condition).order(number: :desc).offset(@offset).limit(@page_size)
 		    @number_of_records = Item.where(description_condition).count
 	    else
-		    sales = Sale.order(number: :desc).offset(@offset).limit(@page_size)
-			@number_of_records = Sale.count
+		    sales = Sale.where(user: @current_user, state: "confirmed").order(number: :desc).offset(@offset).limit(@page_size)
+			@number_of_records = Sale.where(user: @current_user, state: "confirmed").count
 	    end
 
 		return sales, number_of_pages
@@ -90,8 +91,8 @@ class Search
 		description_condition = "unaccent(lower(description)) LIKE '%#{I18n.transliterate(@keywords.downcase)}%'"
 	end
 
-	def number_condition
-		number_condition = "number = #{@keywords.to_i}"
+	def sale_condition
+		number_condition = "number = #{@keywords.to_i} and user_id = #{@current_user.id} and state = 1"
 	end
 
 	def number_of_pages

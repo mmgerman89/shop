@@ -7,11 +7,14 @@
 #  date       :date
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  state      :integer
+#  user_id    :integer
 #
 
 class Sale < ApplicationRecord
 	has_many :sale_details, inverse_of: :sale, dependent: :destroy
 	has_many :items, through: :sale_details
+	belongs_to :user
 
 	validates :number, presence: true
 	validates :date, presence: true
@@ -19,6 +22,7 @@ class Sale < ApplicationRecord
 	accepts_nested_attributes_for :sale_details, reject_if: :sale_detail_rejectable?,
 									allow_destroy: true
 
+	enum state: [:draft, :confirmed, :editing]
 
 	def total
 		details = self.sale_details

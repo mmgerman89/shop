@@ -1,4 +1,5 @@
 (function ($) {
+  console.log("qqq");
   var ready = $.fn.ready;
   $.fn.ready = function (fn) {
     if (this.context === undefined) {

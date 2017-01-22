@@ -7,6 +7,8 @@
 #  date       :date
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  state      :integer
+#  user_id    :integer
 #
 
 require 'test_helper'

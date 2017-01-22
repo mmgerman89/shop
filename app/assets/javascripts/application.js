@@ -12,11 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require jquery-readyselector
+//= require turbolinks
 //= require 'bootstrap-sass-official'
-//= require_tree .
 //= require cocoon
 //= require bootstrap-modal
 //= require bootstrap-modalmanager
 //= require 'typeahead.js.js'
+//= require_tree .
