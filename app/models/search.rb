@@ -74,8 +74,10 @@ class Search
 		    sales = Sale.where(sale_condition).order(number: :desc).offset(@offset).limit(@page_size)
 		    @number_of_records = Item.where(description_condition).count
 	    else
-		    sales = Sale.where(user: @current_user, state: "confirmed").order(number: :desc).offset(@offset).limit(@page_size)
-			@number_of_records = Sale.where(user: @current_user, state: "confirmed").count
+		    #sales = Sale.where(user: @current_user, state: "confirmed").order(number: :desc).offset(@offset).limit(@page_size)
+			#@number_of_records = Sale.where(user: @current_user, state: "confirmed").count
+		    sales = Sale.where(state: "confirmed").order(number: :desc).offset(@offset).limit(@page_size)
+			@number_of_records = Sale.where(state: "confirmed").count
 	    end
 
 		return sales, number_of_pages

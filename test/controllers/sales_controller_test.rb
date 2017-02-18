@@ -6,7 +6,7 @@ class SalesControllerTest < ActionDispatch::IntegrationTest
   setup do
     sign_in users(:admin)
     @sale = sales(:one)
-    @sale2 = Sale.new(number: 159, date: '20161001')
+    @sale2 = Sale.new(number: 159, date: '20161001', user: users(:admin))
   end
 
   test "should get index" do
@@ -21,12 +21,6 @@ class SalesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create sale" do
-    post sales_url, params: { id: @sale.id, sale: { date: @sale.date, number: @sale.number } }
-
-    assert_redirected_to sales_url
-  end
-
   test "should show sale" do
     get sale_url(@sale)
     assert_response :success
@@ -38,7 +32,7 @@ class SalesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update sale" do
-    patch sale_url(@sale), params: { sale: { date: @sale.date, number: @sale.number } }
+    patch sale_url(@sale), params: { sale: { date: @sale.date, number: @sale.number, user: @sale.user } }
     assert_redirected_to sales_url
   end
 

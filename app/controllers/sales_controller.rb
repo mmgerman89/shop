@@ -26,7 +26,9 @@ class SalesController < ApplicationController
 
   # GET /sales/new
   def new
-    @sale = Sale.create(date: Date::current, number: Sale.where(state: "confirmed", user: current_user).maximum('number') + 1, state: "draft", user: current_user)
+    last_sale = Sale.where(state: "confirmed", user: current_user).maximum('number')
+    number =  (last_sale != nil) ? last_sale + 1 : 1
+    @sale = Sale.create(date: Date::current, number: number, state: "draft", user: current_user)
     @sale.sale_details.build
     params[:sale_id] = @sale.id.to_s
   end
@@ -74,7 +76,7 @@ class SalesController < ApplicationController
   def destroy
     @sale.destroy
     respond_to do |format|
-      format.html { redirect_to sales_url, notice: 'Sale was successfully destroyed.' }
+      format.html { redirect_to sales_url, notice: 'Venta eliminada.' }
       format.json { head :no_content }
     end
   end
