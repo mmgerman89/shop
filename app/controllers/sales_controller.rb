@@ -5,13 +5,13 @@ class SalesController < ApplicationController
   # GET /sales
   # GET /sales.json
   def index
-=begin
+
     # clear no saved sales:
     unsaved_sales = Sale.where(state: "draft", user: current_user)
     unsaved_sales.each do |sale|
       sale.destroy
     end
-=end
+
     @page = (params[:page] || 0).to_i
     @keywords = params[:keywords]
 
@@ -33,8 +33,8 @@ class SalesController < ApplicationController
 
   # GET /sales/1/edit
   def edit
-    @sale.editing!
-    @sale.save
+    # @sale.editing!
+    # @sale.save
   end
 
   # POST /sales
