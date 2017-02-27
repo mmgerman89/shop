@@ -21,7 +21,7 @@
           <% end %>
         </td>
         <td><%= sale.number %></td>
-        <td><%= sale.created_at.strftime("%d/%m/%Y") %></td>
+        <td><%= sale.date.strftime("%d/%m/%Y") %></td>
         <td><%= number_to_currency(sale.total) %></td>
         <td>
           <%= button_to edit_sale_path(sale), {method: :get, class: "btn btn-info"} do %>
