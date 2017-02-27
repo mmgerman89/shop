@@ -5,7 +5,6 @@ class SalesController < ApplicationController
   # GET /sales
   # GET /sales.json
   def index
-
     # clear no saved sales:
     unsaved_sales = Sale.where(state: "draft", user: current_user)
     unsaved_sales.each do |sale|
@@ -35,25 +34,11 @@ class SalesController < ApplicationController
 
   # GET /sales/1/edit
   def edit
-    # @sale.editing!
-    # @sale.save
   end
 
   # POST /sales
   # POST /sales.json
   def create
-=begin
-    @sale.confirmed!
-    respond_to do |format|
-      if @sale.save
-        format.html { redirect_to sales_url, notice: 'Venta creada.' }
-        format.json { render :show, status: :created, location: @sale }
-      else
-        format.html { render :new }
-        format.json { render json: @sale.errors, status: :unprocessable_entity }
-      end
-    end
-=end
   end
 
   # PATCH/PUT /sales/1

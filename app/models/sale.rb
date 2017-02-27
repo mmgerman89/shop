@@ -22,7 +22,7 @@ class Sale < ApplicationRecord
 	accepts_nested_attributes_for :sale_details, reject_if: :sale_detail_rejectable?,
 									allow_destroy: true
 
-	enum state: [:draft, :confirmed, :editing]
+	enum state: [:draft, :confirmed]
 
 	def total
 		details = self.sale_details

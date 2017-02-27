@@ -6,7 +6,7 @@ class ItemsSuggestionController < ApplicationController
 			condition2 = condition1 + " OR unaccent(lower(brands.name)) LIKE '%#{I18n.transliterate(query.downcase)}%'"
 			@items = Item.joins(:brand).where(condition2)
 			@items.each do |item|
-				item.description = item.item_description# = item.description + ' ' + item.brand.name
+				item.description = item.item_description
 			end
 		end
 		@items ||= Item.none
