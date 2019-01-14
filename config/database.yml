@@ -1,11 +1,8 @@
 
 default: &default
   adapter: postgresql
-  user: shop
-  password: shop
   pool: 5
   timeout: 5000
-  host: localhost
 
 development:
   <<: *default
@@ -17,6 +14,5 @@ test:
 
 production:
   <<: *default
-  database: shopgm_production
-  username: shopgm
+  database: shop_production
   password: <%= ENV['MYAPP_DATABASE_PASSWORD']

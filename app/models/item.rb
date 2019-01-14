@@ -23,14 +23,14 @@ class Item < ApplicationRecord
   validates :description, presence: true
 
   def item_description
-  	self.description + ( (self.brand != nil) ? ' ' + self.brand.name : '' )
+    description + (!brand.nil? ? ' ' + brand.name : '')
   end
 
   def brand_name
-  	if self.brand
-  		self.brand.name
-  	else
-  		''
-  	end
+    if brand
+      brand.name
+    else
+      ''
+    end
   end
 end

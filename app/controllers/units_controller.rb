@@ -1,5 +1,5 @@
 class UnitsController < ApplicationController
-  before_action :set_unit, only: [:show, :edit, :update, :destroy]
+  before_action :set_unit, only: %i[show edit update destroy]
   PAGE_SIZE = 10
 
   # GET /units
@@ -14,8 +14,7 @@ class UnitsController < ApplicationController
 
   # GET /units/1
   # GET /units/1.json
-  def show
-  end
+  def show; end
 
   # GET /units/new
   def new
@@ -23,8 +22,7 @@ class UnitsController < ApplicationController
   end
 
   # GET /units/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /units
   # POST /units.json
@@ -67,13 +65,14 @@ class UnitsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_unit
-      @unit = Unit.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def unit_params
-      params.require(:unit).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_unit
+    @unit = Unit.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def unit_params
+    params.require(:unit).permit(:name)
+  end
 end

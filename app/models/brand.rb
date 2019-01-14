@@ -9,9 +9,9 @@
 #
 
 class Brand < ApplicationRecord
-	include ActiveModel::Validations
+  include ActiveModel::Validations
 
-	validates :name, presence: true
+  validates :name, presence: true
 
-	validates_with ValidateUnaccent, model: self
+  validates_with ValidateUnaccent, model: self
 end

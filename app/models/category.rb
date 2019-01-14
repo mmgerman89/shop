@@ -9,9 +9,9 @@
 #
 
 class Category < ApplicationRecord
-	include ActiveModel::Validations
-	
-	validates :name, presence: true
+  include ActiveModel::Validations
 
-	validates_with ValidateUnaccent, model: self
+  validates :name, presence: true
+
+  validates_with ValidateUnaccent, model: self
 end

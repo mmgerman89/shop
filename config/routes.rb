@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: 'dashboard#index'
-  
+
   devise_for :users
 
   resources :sales do
@@ -13,12 +13,11 @@ Rails.application.routes.draw do
   resources :categories
   resources :brands
 
-  #get 'validate_suggested_brand/index'
+  # get 'validate_suggested_brand/index'
   get '/brands_suggestion', to: 'brands_suggestion#index'
   get '/validate_suggested_brand', to: 'validate_suggested_brand#index'
 
-
-  #get 'validate_suggested_item/index'
+  # get 'validate_suggested_item/index'
   get '/items_suggestion', to: 'items_suggestion#index'
   get '/validate_suggested_item', to: 'validate_suggested_item#index'
 

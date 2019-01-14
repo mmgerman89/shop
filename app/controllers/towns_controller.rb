@@ -1,5 +1,5 @@
 class TownsController < ApplicationController
-  before_action :set_town, only: [:show, :edit, :update, :destroy]
+  before_action :set_town, only: %i[show edit update destroy]
   PAGE_SIZE = 10
 
   # GET /towns
@@ -14,8 +14,7 @@ class TownsController < ApplicationController
 
   # GET /towns/1
   # GET /towns/1.json
-  def show
-  end
+  def show; end
 
   # GET /towns/new
   def new
@@ -23,8 +22,7 @@ class TownsController < ApplicationController
   end
 
   # GET /towns/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /towns
   # POST /towns.json
@@ -67,13 +65,14 @@ class TownsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_town
-      @town = Town.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def town_params
-      params.require(:town).permit(:name, :code)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_town
+    @town = Town.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def town_params
+    params.require(:town).permit(:name, :code)
+  end
 end
