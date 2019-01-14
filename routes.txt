@@ -1,0 +1,83 @@
+                   Prefix Verb   URI Pattern                                                                              Controller#Action
+                     root GET    /                                                                                        dashboard#index
+         new_user_session GET    /users/sign_in(.:format)                                                                 devise/sessions#new
+             user_session POST   /users/sign_in(.:format)                                                                 devise/sessions#create
+     destroy_user_session DELETE /users/sign_out(.:format)                                                                devise/sessions#destroy
+        new_user_password GET    /users/password/new(.:format)                                                            devise/passwords#new
+       edit_user_password GET    /users/password/edit(.:format)                                                           devise/passwords#edit
+            user_password PATCH  /users/password(.:format)                                                                devise/passwords#update
+                          PUT    /users/password(.:format)                                                                devise/passwords#update
+                          POST   /users/password(.:format)                                                                devise/passwords#create
+ cancel_user_registration GET    /users/cancel(.:format)                                                                  devise/registrations#cancel
+    new_user_registration GET    /users/sign_up(.:format)                                                                 devise/registrations#new
+   edit_user_registration GET    /users/edit(.:format)                                                                    devise/registrations#edit
+        user_registration PATCH  /users(.:format)                                                                         devise/registrations#update
+                          PUT    /users(.:format)                                                                         devise/registrations#update
+                          DELETE /users(.:format)                                                                         devise/registrations#destroy
+                          POST   /users(.:format)                                                                         devise/registrations#create
+        sale_sale_details GET    /sales/:sale_id/sale_details(.:format)                                                   sale_details#index
+                          POST   /sales/:sale_id/sale_details(.:format)                                                   sale_details#create
+     new_sale_sale_detail GET    /sales/:sale_id/sale_details/new(.:format)                                               sale_details#new
+    edit_sale_sale_detail GET    /sales/:sale_id/sale_details/:id/edit(.:format)                                          sale_details#edit
+         sale_sale_detail GET    /sales/:sale_id/sale_details/:id(.:format)                                               sale_details#show
+                          PATCH  /sales/:sale_id/sale_details/:id(.:format)                                               sale_details#update
+                          PUT    /sales/:sale_id/sale_details/:id(.:format)                                               sale_details#update
+                          DELETE /sales/:sale_id/sale_details/:id(.:format)                                               sale_details#destroy
+                    sales GET    /sales(.:format)                                                                         sales#index
+                          POST   /sales(.:format)                                                                         sales#create
+                 new_sale GET    /sales/new(.:format)                                                                     sales#new
+                edit_sale GET    /sales/:id/edit(.:format)                                                                sales#edit
+                     sale GET    /sales/:id(.:format)                                                                     sales#show
+                          PATCH  /sales/:id(.:format)                                                                     sales#update
+                          PUT    /sales/:id(.:format)                                                                     sales#update
+                          DELETE /sales/:id(.:format)                                                                     sales#destroy
+                    items GET    /items(.:format)                                                                         items#index
+                          POST   /items(.:format)                                                                         items#create
+                 new_item GET    /items/new(.:format)                                                                     items#new
+                edit_item GET    /items/:id/edit(.:format)                                                                items#edit
+                     item GET    /items/:id(.:format)                                                                     items#show
+                          PATCH  /items/:id(.:format)                                                                     items#update
+                          PUT    /items/:id(.:format)                                                                     items#update
+                          DELETE /items/:id(.:format)                                                                     items#destroy
+                    units GET    /units(.:format)                                                                         units#index
+                          POST   /units(.:format)                                                                         units#create
+                 new_unit GET    /units/new(.:format)                                                                     units#new
+                edit_unit GET    /units/:id/edit(.:format)                                                                units#edit
+                     unit GET    /units/:id(.:format)                                                                     units#show
+                          PATCH  /units/:id(.:format)                                                                     units#update
+                          PUT    /units/:id(.:format)                                                                     units#update
+                          DELETE /units/:id(.:format)                                                                     units#destroy
+                    towns GET    /towns(.:format)                                                                         towns#index
+                          POST   /towns(.:format)                                                                         towns#create
+                 new_town GET    /towns/new(.:format)                                                                     towns#new
+                edit_town GET    /towns/:id/edit(.:format)                                                                towns#edit
+                     town GET    /towns/:id(.:format)                                                                     towns#show
+                          PATCH  /towns/:id(.:format)                                                                     towns#update
+                          PUT    /towns/:id(.:format)                                                                     towns#update
+                          DELETE /towns/:id(.:format)                                                                     towns#destroy
+               categories GET    /categories(.:format)                                                                    categories#index
+                          POST   /categories(.:format)                                                                    categories#create
+             new_category GET    /categories/new(.:format)                                                                categories#new
+            edit_category GET    /categories/:id/edit(.:format)                                                           categories#edit
+                 category GET    /categories/:id(.:format)                                                                categories#show
+                          PATCH  /categories/:id(.:format)                                                                categories#update
+                          PUT    /categories/:id(.:format)                                                                categories#update
+                          DELETE /categories/:id(.:format)                                                                categories#destroy
+                   brands GET    /brands(.:format)                                                                        brands#index
+                          POST   /brands(.:format)                                                                        brands#create
+                new_brand GET    /brands/new(.:format)                                                                    brands#new
+               edit_brand GET    /brands/:id/edit(.:format)                                                               brands#edit
+                    brand GET    /brands/:id(.:format)                                                                    brands#show
+                          PATCH  /brands/:id(.:format)                                                                    brands#update
+                          PUT    /brands/:id(.:format)                                                                    brands#update
+                          DELETE /brands/:id(.:format)                                                                    brands#destroy
+        brands_suggestion GET    /brands_suggestion(.:format)                                                             brands_suggestion#index
+ validate_suggested_brand GET    /validate_suggested_brand(.:format)                                                      validate_suggested_brand#index
+         items_suggestion GET    /items_suggestion(.:format)                                                              items_suggestion#index
+  validate_suggested_item GET    /validate_suggested_item(.:format)                                                       validate_suggested_item#index
+                  reports GET    /reports(.:format)                                                                       reports#index
+       rails_service_blob GET    /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
+rails_blob_representation GET    /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
+       rails_disk_service GET    /rails/active_storage/disk/:encoded_key/*filename(.:format)                              active_storage/disk#show
+update_rails_disk_service PUT    /rails/active_storage/disk/:encoded_token(.:format)                                      active_storage/disk#update
+     rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create

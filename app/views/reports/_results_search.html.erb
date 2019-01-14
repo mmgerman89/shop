@@ -1,0 +1,26 @@
+<table class="table">
+  <thead>
+    <tr>
+      <%= render partial: "pager", locals: { keywords: @keywords, page: @page } %>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Número</th>
+      <th>Fecha</th>
+      <th>Total</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reports.each do |report| %>
+      <tr>
+        <td>
+        </td>
+        <td><%= report.number %></td>
+        <td><%= report.date.strftime("%d/%m/%Y") %></td>
+        <td><%= number_to_currency(report.total) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

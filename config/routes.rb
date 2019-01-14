@@ -21,5 +21,8 @@ Rails.application.routes.draw do
   get '/items_suggestion', to: 'items_suggestion#index'
   get '/validate_suggested_item', to: 'validate_suggested_item#index'
 
+  # Reports
+  get '/reports', to: 'reports#index'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
