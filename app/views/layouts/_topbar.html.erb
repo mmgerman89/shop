@@ -11,11 +11,11 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Ayuda</a></li>
-        <li><a href="#">Configuración</a></li>
+        <li><a href="#">Help</a></li>
+        <li><a href="#">Configuration</a></li>
         <% if user_signed_in? %>
           <li>            
-            <%= link_to "Salir", destroy_user_session_path, method: :delete %>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete %>
           </li>
         <% end %>
       </ul>

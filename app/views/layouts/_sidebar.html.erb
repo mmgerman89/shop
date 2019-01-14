@@ -12,27 +12,27 @@
       <ul class="nav navbar-nav">
         <li class="<%= current_page?(root_path) ? "active" : "" %>">
           <a href="<%= root_path %>">
-            Inicio
+            Home
             <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-blackboard"></span>
           </a>
         </li>  
         
         <li class="<%= current_page?(sales_path) ? "active" : "" %>">
           <a href="<%= sales_path %>">
-            Ventas
+            Sales
             <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-shopping-cart"></span>
           </a>
         </li>   
         
         <li >
           <a href="#">
-            Contabilidad
+            Manage
             <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-book"></span>
           </a>
         </li>
 
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Almacén <span class="caret"></span>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Store <span class="caret"></span>
             <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span>
           </a>
           <ul class="dropdown-menu forAnimate" role="menu">
@@ -42,17 +42,17 @@
 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            Configuración
+            Configuration
             <span class="caret"></span>
             <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-wrench"></span>
           </a>
           <ul class="dropdown-menu forAnimate" role="menu">
-            <li class="<%= current_page?(categories_path) ? "active" : "" %>"><%= link_to 'Categorías', categories_path %></li>
-            <li class="<%= current_page?(brands_path) ? "active" : "" %>"><%= link_to 'Marcas', brands_path %></li>
-            <li class="<%= current_page?(units_path) ? "active" : "" %>"><%= link_to 'Unidades', units_path %></li>
-            <li class="<%= current_page?(towns_path) ? "active" : "" %>"><%= link_to 'Localidades', towns_path %></li>
+            <li class="<%= current_page?(categories_path) ? "active" : "" %>"><%= link_to 'Categories', categories_path %></li>
+            <li class="<%= current_page?(brands_path) ? "active" : "" %>"><%= link_to 'Brands', brands_path %></li>
+            <li class="<%= current_page?(units_path) ? "active" : "" %>"><%= link_to 'Units', units_path %></li>
+            <li class="<%= current_page?(towns_path) ? "active" : "" %>"><%= link_to 'Towns', towns_path %></li>
             <li class="divider"></li>
-            <li><a href="#">Respaldo</a></li>
+            <li><a href="#">BackUp</a></li>
           </ul>
         </li>
       </ul>
